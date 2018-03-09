@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="mobile-web-app-capable" content="yes">
+	<link rel="icon" href="icon.png" >
+	<link rel="stylesheet" type="text/css" href="wah.css">
+	<link rel="manifest" href="/manifest.json">
+	<title>WAH Experience</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src="WAHFeedback.js"></script>
+</head>
+
+<body oncontextmenu="return false;" ng-app="WAHfeedback">
+<div ng-controller="WAHfeedbackCtrl">
+	<div id="Home">
+		<div class="top">
+			<div class="col-logo">
+				<img class="logo" src="wah_logo7.png" alt="WAH.png">
+			</div>
+			<div class="titlebar">
+				<p class="title">CLINIC FEEDBACK</p>
+			</div>
+			<div class="col-logo">
+				<img class="logo logo2" src="LGU.png" alt="LGU.png">
+			</div>
+		</div>
+			<div class="col-body consultbar">
+			<div class="consult">
+				<p class="txtconsult">CONSULTATION NO.</p>
+			</div>
+		
+			<div>
+				<input type="text"  value="{{output}}" class="col-2 txtinput" ng-model="output" readonly>
+			</div>
+				<div class="col-2 ok">
+				<button type="button" class="oktxt" ng-click="showReaction()">OK</button>
+			</div>
+		</div>
+
+		<div class="col-full">
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(1)">1</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(2)">2</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(3)">3</button>
+			</div>
+		</div>
+			<div class="col-full">
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(4)">4</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(5)">5</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(6)">6</button>
+			</div>
+		</div>
+			<div class="col-full">
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(7)">7</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(8)">8</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(9)">9</button>
+			</div>
+		</div>
+			<div class="col-full">
+			<div class="col-button space"></div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt" ng-click="getNumber(0)">0</button>
+			</div>
+			<div class="col-button button" ng-model="number">
+			<button type="button" class="buttontxt redbutton" ng-click="clear()">Clear</button>
+			</div>
+		</div>
+	</div>
+		<div id="Reaction" class="hidden">
+		<div class="col-full top">
+			<div class="col-logo">
+				<img class="logo" src="wah_logo7.png" alt="WAH Logo">
+			</div>
+			<div class="titlebar" >
+				<p class="title">Kumusta ang aming serbisyo?</p>
+			</div>
+			<div class="col-logo">
+				<img class="logo logo2" src="LGU.png" alt="LGU.png">
+			</div>
+		</div>
+
+		<div class="reactions">
+			<button type="button" ng-click="getReaction(0); showCategory()" class="col-react reaction">
+				<img class="emoji" src="sad.png" alt="Sad Emoji">
+				<br>
+				<p class="sad">SAD</p>
+			</button>
+		
+			<button type="button" ng-click="getReaction(1);showCategory()" class="col-react reaction
+				 reaction2">
+				<img class="emoji" src="Happy.png" alt="Happy Emoji">
+				<p class="happy">HAPPY</p>
+			</button>
+		</div>
+	</div>
+		<div id ="Category" class="hidden">
+		<div class="col-full top top2">
+			<div class="col-logo2">
+				<img class="logo" src="wah_logo7.png" alt="WAH Logo">
+			</div>
+			<div class="titlebar">
+				<p class="title2"  ng-model="reaction" data-ng-init="getReaction()">{{reaction}}</p>
+			<br>
+			<p class="title2">sa aming serbisyo?</p>
+			</div>
+			<div class="col-logo2">
+				<img class="logo logo3" src="LGU.png" alt="LGU.png">
+			</div>
+		</div>
+		<button type="button" class="col-pic category" ng-click="showThanks();startTimer()">
+			<img class="categorypic" src="Time.png" alt="Time pic">
+			<p class="categorytxt">Bilis/</p>
+			<br>
+			<p class="categorytxt categorytxt2">Speed</p>
+		</button>
+		<button type="button" class="col-pic category" ng-click="showThanks();startTimer()">
+			<img class="categorypic" src="Staff.png" alt="Staff pic">
+			<p class="categorytxt">Empleyado/</p>
+			<br>
+			<p class="categorytxt categorytxt2">Staff</p>
+		</button>
+			<button type="button" class="col-pic category" ng-click="showThanks();startTimer()">
+			<img class="categorypic" src="Facility.png" alt="Facility pic">
+			<p class="categorytxt">Pasilidad/</p>
+			<br>
+			<p class="categorytxt categorytxt2">Facility</p>
+		</button>
+	</div>
+		<div id ="Thanks" class="hidden">
+		<div class="col-full top">
+			<div class="col-logo">
+				<img class="logo" src="wah_logo7.png" alt="WAH.png">
+			</div>
+			<div class="center titlebar">
+				<p class="title">END OF SURVEY</p>
+			</div>
+			<div class="col-logo">
+				<img class="logo logo2" src="LGU.png" alt="LGU.png">
+			</div>
+		</div>
+			<p class="thank center">Maraming Salamat po.</p>
+			<p class="credit center">Ito ay hatid ng:</p>
+
+		<div class="center wah">
+			<img class="col-pic TSUlogo center" src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f6/Tarlac_State_University_Seal.png/190px-Tarlac_State_University_Seal.png" alt="TSU Logo">
+		</div>
+
+		<div class="center wah">
+			<img class="col-pic officiallogo center " src="wah.gif" alt="WAH Logo">
+		</div>
+
+		<div class="center wah">
+			<img class="col-pic LGUlogo center " src="LGU.png" alt="LGU Logo">
+		</div>
+	</div>
+</div>
+</body>
+</html>			
